@@ -1,4 +1,4 @@
-import {CLEAR, DECREASE, INCREASE, REMOVE} from './action';
+import {CLEAR, DECREASE, GET_TOTAL, INCREASE, REMOVE} from './action';
 import cartItems from './cart-items';
 
 export const initialState = {
@@ -39,8 +39,26 @@ const reducer = (state, action) => {
         }
         return null;
       });
-
       return {...state, cart: filteredItem};
+
+    case GET_TOTAL:
+      const totalItem = state.cart.reduce(
+        (total, item) => {
+          const {price, amount} = item;
+          total.amount += amount;
+          total.price += amount * price;
+          return total;
+        },
+        {
+          price: 0,
+          amount: 0,
+        }
+      );
+      return {
+        ...state,
+        total: totalItem.price.toFixed(2),
+        amount: totalItem.amount,
+      };
 
     default:
       return {...state};

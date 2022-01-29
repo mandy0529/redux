@@ -1,9 +1,14 @@
 import React from 'react';
 import CartItem from './CartItem';
 import {connect} from 'react-redux';
-import {CLEAR} from '../action';
+import {CLEAR, GET_TOTAL} from '../action';
+import {useEffect} from 'react';
 
 const CartContainer = ({cart = [], total, dispatch}) => {
+  useEffect(() => {
+    dispatch({type: GET_TOTAL});
+  }, [cart]);
+
   if (cart.length === 0) {
     return (
       <section className="cart">
@@ -15,6 +20,7 @@ const CartContainer = ({cart = [], total, dispatch}) => {
       </section>
     );
   }
+
   return (
     <section className="cart">
       {/* cart header */}
