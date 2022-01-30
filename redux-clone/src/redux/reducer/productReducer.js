@@ -9,7 +9,7 @@ export const initialState = {
 export const productReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case SET_PRODUCT:
-      return state;
+      return {...state, items: payload};
 
     default:
       return state;
