@@ -1,0 +1,34 @@
+const form = document.querySelector('form');
+const input = document.querySelector('input');
+
+const todoReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      const value = action.payload;
+      return {
+        ...state,
+        list: [...state.list, {id: Math.random(), text: value}],
+      };
+
+    default:
+      break;
+  }
+  return state;
+};
+
+const initialState = {
+  list: [],
+};
+
+const store = Redux.createStore(todoReducer, initialState);
+
+store.subscribe(() => console.log(store.getState()));
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const value = input.value;
+  store.dispatch({type: 'ADD_TODO', payload: value});
+  input.value = '';
+};
+
+form.addEventListener('submit', handleSubmit);

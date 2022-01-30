@@ -31,3 +31,5 @@ const handleMinus = () => {
 plus.addEventListener('click', handlePlus);
 minus.addEventListener('click', handleMinus);
 store.subscribe(handleChange);
+
+// --------------------------------------------------------------------
