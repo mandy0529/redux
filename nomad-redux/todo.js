@@ -1,5 +1,6 @@
 const form = document.querySelector('form');
 const input = document.querySelector('input');
+const ul = document.querySelector('ul');
 
 const todoReducer = (state = [], action) => {
   switch (action.type) {
@@ -22,7 +23,22 @@ const initialState = {
 
 const store = Redux.createStore(todoReducer, initialState);
 
-store.subscribe(() => console.log(store.getState()));
+const paintTodo = () => {
+  const {list} = store.getState();
+  ul.innerHTML = '';
+  list.map((item) => {
+    const liDom = document.createElement('li');
+    const text = `<div>
+    <span>${item.text}<span>
+    <button>❌</button>
+    </div>`;
+    liDom.id = item.id;
+    liDom.innerHTML = text;
+    ul.appendChild(liDom);
+  });
+};
+
+store.subscribe(paintTodo);
 
 const handleSubmit = (e) => {
   e.preventDefault();
