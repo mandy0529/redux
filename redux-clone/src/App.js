@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ProductList />} />
-          <Route path="/proejct/:id" element={<ProductDetail />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

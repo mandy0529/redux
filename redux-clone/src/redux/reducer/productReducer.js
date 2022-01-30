@@ -15,3 +15,16 @@ export const productReducer = (state = initialState, {type, payload}) => {
       return state;
   }
 };
+
+export const singleProductReducer = (
+  state = {singleItem: {}},
+  {type, payload}
+) => {
+  switch (type) {
+    case SELECTED_PRODUCT:
+      return {...state, singleItem: payload};
+
+    default:
+      return state;
+  }
+};
