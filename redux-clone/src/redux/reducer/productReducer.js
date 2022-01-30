@@ -6,6 +6,10 @@ export const initialState = {
   items: [],
 };
 
+export const singleState = {
+  singleItem: {},
+};
+
 export const productReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case SET_PRODUCT:
@@ -16,13 +20,13 @@ export const productReducer = (state = initialState, {type, payload}) => {
   }
 };
 
-export const singleProductReducer = (
-  state = {singleItem: {}},
-  {type, payload}
-) => {
+export const singleProductReducer = (state = singleState, {type, payload}) => {
   switch (type) {
     case SELECTED_PRODUCT:
       return {...state, singleItem: payload};
+
+    case REMOVE_PRODUCT:
+      return {...state, singleItem: {}};
 
     default:
       return state;
