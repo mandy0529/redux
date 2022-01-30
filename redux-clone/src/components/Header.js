@@ -1,7 +1,13 @@
 import React from 'react';
 
 function Header() {
-  return <div>header</div>;
+  return (
+    <div className="ui fixed menu">
+      <div className="ui container center">
+        <h2>fake shop</h2>
+      </div>
+    </div>
+  );
 }
 
 export default Header;
