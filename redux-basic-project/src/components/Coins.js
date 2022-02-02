@@ -20,8 +20,6 @@ function Coins() {
     fetchData();
   }, []);
 
-  console.log(coin);
-
   return (
     <div>
       <h1>coins</h1>
